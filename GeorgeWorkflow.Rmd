@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Packages
+```{r setup}
+library(ggplot2)
+library(readr)
+```
+
+
+Data 
+```{r}
+library(haven)
+dmae <- read_sas("https://github.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/raw/master/Examples/data/dmae.sas7bdat", 
+     NULL)
+View(dmae)
+```
+
+Visualize
+```{r}
+ ggplot(dmae) +
+  aes(x = COUNTRY, y = AGE, fill = ARM) +
+  geom_boxplot(shape = "circle") +
+  scale_fill_hue(direction = 1) +
+  theme_minimal()
+
+```
+
